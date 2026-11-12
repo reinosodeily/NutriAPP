@@ -1,9 +1,11 @@
 package com.example.NutriAPP.models;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.example.NutriAPP.models.helpers.Departamento;
 import com.example.NutriAPP.models.helpers.Rol;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
@@ -14,6 +16,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity 
@@ -42,6 +45,12 @@ public class Usuario {
     
    @Column (name= "contrasena", nullable = false, unique = false)
     private String contrasena;
+    
+    @OneToMany (mappedBy = "usuario")
+    @JsonManagedReference (value = "usuario-visualizacion")
+    private List<Visualizacion> visualizacion;
+    
+
 
     public Usuario() {
     }
