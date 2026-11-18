@@ -1,7 +1,12 @@
 package com.example.NutriAPP.services;
 
+import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.NutriAPP.models.Usuario;
 import com.example.NutriAPP.repositories.IUsuarioRepositorio;
@@ -20,7 +25,24 @@ public class UsuarioServicio {
      public Usuario guardar(Usuario datos){
 
         return this.repositorio.save(datos);
-     }
+
+        }
+     
+     public Usuario buscarPorId(UUID id){
+
+        Optional<Usuario> usuarioBucado=this.repositorio.findById(id);
+        if (!usuarioBucado.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"id no encontrado");
+            
+
+            
+        }else{
+            return usuarioBucado.get();
+        }
+
+
+            
+        }
 
 
 }
