@@ -28,21 +28,42 @@ public class UsuarioServicio {
 
         }
      
+        //metodo de busqueda por id
      public Usuario buscarPorId(UUID id){
 
         Optional<Usuario> usuarioBucado=this.repositorio.findById(id);
         if (!usuarioBucado.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"id no encontrado");
-            
+
 
             
         }else{
             return usuarioBucado.get();
         }
+   
+        }
+
+        //metodo para modificar 
+        public Usuario modificar(UUID id, Usuario datos){
+
+            Optional<Usuario> usuarioBucado=this.repositorio.findById(id);
+        if (!usuarioBucado.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"id no encontrado");
 
 
             
+        }else{
+            
+            //precargar la info que existe actualmente en BD
+            Usuario usuarioEncontrado =usuarioBucado.get();
+
+            usuarioEncontrado.setNombre(datos.getNombre());
+            usuarioBucado.setRol(datos.getRol());
+
+            //espacio para vorver aguardar el usuario que se acaba de modificar 
+            return this.repositorio.save(usuarioEncontrado); 
         }
 
+        }
 
 }

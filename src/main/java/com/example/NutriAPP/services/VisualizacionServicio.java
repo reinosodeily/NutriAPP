@@ -33,8 +33,8 @@ public class VisualizacionServicio {
         }else{
             return visualizacionBucado.get();
         }
-
-
-            
+   
         }
+
+    
 }
