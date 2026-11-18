@@ -7,9 +7,8 @@ import com.example.NutriAPP.models.helpers.Departamento;
 import com.example.NutriAPP.models.helpers.Rol;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.annotation.Generated;
+
 import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
