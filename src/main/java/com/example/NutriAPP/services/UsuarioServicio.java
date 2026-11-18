@@ -56,12 +56,12 @@ public class UsuarioServicio {
             
             //precargar la info que existe actualmente en BD
             Usuario usuarioEncontrado =usuarioBucado.get();
-
+            //espacio para modificar solo los propiedades permitidos 
             usuarioEncontrado.setNombre(datos.getNombre());
-            usuarioBucado.setRol(datos.getRol());
+            usuarioEncontrado.setRol(datos.getRol());
 
             //espacio para vorver aguardar el usuario que se acaba de modificar 
-            return this.repositorio.save(usuarioEncontrado); 
+            return this.repositorio.save(usuarioEncontrado);
         }
 
         }
