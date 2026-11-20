@@ -66,4 +66,18 @@ public class UsuarioServicio {
 
         }
 
+           public boolean eliminar (UUID id){
+
+             Optional<Usuario> usuarioBucado=this.repositorio.findById(id);
+        if (!usuarioBucado.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"id no encontrado");
+            
+
+            
+        }else{
+            this.repositorio.deleteById(id);
+            return true;
+        }
+        }
+
 }
